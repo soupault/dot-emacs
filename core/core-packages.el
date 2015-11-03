@@ -1,5 +1,9 @@
 ;;; core-packages.el ---
 
+
+;; Add directory with side packages
+(add-to-list 'load-path "~/.emacs.d/elcustom")
+
 (require 'cl)
 (require 'package)
 
@@ -15,19 +19,10 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar bobry-packages
-  '(diminish exec-path-from-shell use-package)
-  "A list of packages to ensure are installed at launch.")
-
-(mapc #'(lambda (package)
-          (unless (package-installed-p package)
-            (package-install package)))
-      bobry-packages)
-
 (eval-when-compile
   (require 'use-package))
 
-(require 'diminish)
 (require 'bind-key)
+
 
 ;;; core-packages.el ends here

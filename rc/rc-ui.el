@@ -1,58 +1,47 @@
 ;;; rc-ui.el ---
 
 
-(when (window-system)
-  (x-focus-frame nil)
-  (let ((font-name "Monaco-14"))
-    (when (find-font (font-spec :name font-name))
-      (set-frame-font font-name))))
-
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
 
-;; disable startup screen and *scratch* message
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
+;; Highlight paired parenthesis
+(show-paren-mode t)
 
-;; nice scrolling
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+;; Tailor split width threshold for 14"
+(setq split-width-threshold 140)
 
-;; mode line settings
+;; Disable startup screen
+(setq inhibit-startup-screen t)
+
+;; Mode line settings
+
+;; Show line number for all modes
+(global-linum-mode t)
+;; Set spacer for -nw version
+(unless window-system
+  (defadvice linum-update-window (around linum-dynamic activate)
+    (let* ((w (length (number-to-string
+                       (count-lines (point-min) (point-max)))))
+           (linum-format (concat "%" (number-to-string w) "d ")))
+      ad-do-it)))
+
 (line-number-mode t)
 (column-number-mode t)
-(size-indication-mode t)
 
-(mouse-avoidance-mode 'cat-and-mouse)
-
-(setq ring-bell-function 'ignore)
-
-(global-linum-mode 0)   ;; no line number unless i say so ...
-(blink-cursor-mode -1)  ;; ... and cut out that blinking, okay?
 
 (setq cursor-in-non-selected-windows nil
       use-dialog-box nil)
 
-;; stop prompting me, allright?
-;; a) y is yes and n is no
+;; Prompting
 (fset 'yes-or-no-p 'y-or-n-p)
-;; b) i don't care if the process is running
-(setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-        kill-buffer-query-functions))
 
-(use-package smart-mode-line
-  :ensure t
-  :init (setq sml/theme 'respectful
-              sml/no-confirm-load-theme t))
+;;
+(require 'color-theme-tomorrow)
+(color-theme-tomorrow--define-theme night)
 
-(use-package solarized-theme
-  :ensure t
-  :config (progn
-            (load-theme 'solarized-dark t)
-            (sml/setup)))
+;; Powerful tool to manage file- and buffer- interfacing
+(require 'ido)
+(ido-mode t)
 
 
 ;;; rc-ui.el ends here

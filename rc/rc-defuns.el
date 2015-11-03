@@ -1,4 +1,4 @@
-;;; rc-misc.el ---
+;;; rc-defuns.el ---
 
 
 ;; The next three functions are taken from the awesome 'Emacs Prelude'
@@ -38,9 +38,5 @@ file of a buffer in an external program."
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)))))))
 
-(defun text-scale-normal-size ()
-  (interactive)
-  (text-scale-increase 0))
 
-
-;;; rc-misc.el ends here
+;;; rc-defuns.el ends here

@@ -1,16 +1,6 @@
 ;;; rc-languages.el ---
 
 
-(defun turn-on-whitespace ()
-  (whitespace-mode t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
-
-(defun turn-on-linum () (linum-mode t))
-
-(add-hook 'prog-mode-hook 'turn-on-whitespace)
-(add-hook 'prog-mode-hook 'turn-on-linum)
-
-
 ;; Python
 
 (use-package python-mode
@@ -36,120 +26,6 @@
                       ;; same bug for cython, damit!
                       (remove-hook 'completion-at-point-functions
                                    'py-shell-complete t))))
-
-
-;; Erlang
-
-(require 'em-glob)
-
-(setq erlang-root-dir
-      (if (eq system-type 'gnu/linux)
-          "/usr/lib/erlang"
-        "/usr/local/lib/erlang"))
-
-(defun directory-files-glob (path)
-  (directory-files (file-name-directory path)
-                   t
-                   (eshell-glob-regexp (file-name-nondirectory path))))
-
-(defun directory-any-file-glob (path)
-  (car (directory-files-glob path)))
-
-(when (file-exists-p erlang-root-dir)
-  (add-to-list 'load-path (concat
-                           (file-name-as-directory
-                            (directory-any-file-glob
-                             (concat erlang-root-dir "/lib/tools-*")))
-                           "emacs"))
-
-  (require 'erlang-start))
-
-
-;; Haskell
-
-(use-package haskell-mode
-  :ensure haskell-mode
-  :commands haskell-mode
-  :config (progn
-            (require 'inf-haskell)
-            (require 'haskell-compile)
-            (require 'haskell-checkers)
-            (require 'haskell-navigate-imports)
-
-            (bind-keys :map haskell-mode-map
-                       ("C-c C-c" . haskell-compile)
-                       ("M-[" . haskell-navigate-imports)
-                       ("M-]" . haskell-navigate-imports-return))
-
-            (add-hook 'haskell-mode-hook
-                      '(lambda ()
-                         (subword-mode +1)
-                         (haskell-doc-mode 1)))))
-
-(use-package hi2
-  :ensure hi2
-  :config (progn
-            (add-hook 'haskell-mode-hook
-                      '(lambda ()
-                         (setq tab-width 4
-                               hi2-layout-offset 4
-                               hi2-left-offset 4
-                               hi2-ifte-offset 4)
-
-                         (haskell-indent-mode -1)
-                         (hi2-mode)))))
-
-(use-package ghci-completion
-  :ensure ghci-completion
-  :init (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
-
-
-;; OCaml
-
-(use-package tuareg
-  :ensure t
-  :commands tuareg-mode
-  :config
-  (when (executable-find "opam")
-    (add-to-list 'load-path
-                 (concat
-                  (replace-regexp-in-string
-                   "\n$" ""
-                   (shell-command-to-string "opam config var share"))
-                  "/emacs/site-lisp"))
-
-    (require 'ocp-indent)
-    (require 'ocp-index)
-    (setq ocp-indent-config "with_never=true")
-
-    (when (require 'merlin nil t)
-      (add-hook 'tuareg-mode-hook 'merlin-mode t)
-      (add-hook 'caml-mode-hook 'merlin-mode t)
-      (setq merlin-command 'opam))))
-
-
-;; (use-package flycheck-ocaml
-;;   :ensure flycheck-ocaml
-;;   :config (with-eval-after-load 'merlin
-;;             (setq merlin-error-after-save nil)
-;;             (flycheck-ocaml-setup)))
-
-
-;; Coffee
-
-(use-package coffee-mode
-  :ensure t
-  :commands coffee-mode
-  :init (add-hook 'coffee-mode-hook
-                  '(lambda ()
-                     (set (make-local-variable 'tab-width) 2)
-                     (setq coffee-args-compile '("-c", "--bare")
-                           coffee-debug-mode t)
-
-                     ;; Compile '.coffee' files on every save
-                     (and (file-exists-p (buffer-file-name))
-                          (file-exists-p (coffee-compiled-file-name))
-                          (coffee-cos-mode t)))))
 
 
 ;; C, C++
