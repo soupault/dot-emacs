@@ -2,6 +2,8 @@
 
 
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "M-d") 'kill-whitespace-or-word)
+(global-set-key (kbd "M-;") 'comment-eclipse)
 
 (global-set-key (kbd "C-x C-x") 'ido-switch-buffer)
 

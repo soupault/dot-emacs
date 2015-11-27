@@ -16,7 +16,7 @@
 ;; Mode line settings
 
 ;; Show line number for all modes
-(global-linum-mode t)
+;; (global-linum-mode t)
 ;; Set spacer for -nw version
 (unless window-system
   (defadvice linum-update-window (around linum-dynamic activate)

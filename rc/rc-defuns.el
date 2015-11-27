@@ -1,5 +1,32 @@
 ;;; rc-defuns.el ---
 
+;; Comment current line if no region is selected
+(defun comment-eclipse ()
+  (interactive)
+  (let ((start (line-beginning-position))
+        (end (line-end-position)))
+    (when (region-active-p)
+      (setq start (save-excursion
+                    (goto-char (region-beginning))
+                    (beginning-of-line)
+                    (point))
+            end (save-excursion
+                  (goto-char (region-end))
+                  (end-of-line)
+                  (point))))
+    (comment-or-uncomment-region start end)))
+
+
+;; If cursor stands on whitespace, delete it till the next word
+(defun kill-whitespace-or-word ()
+  (interactive)
+  (if (looking-at "[ \t\n]")
+      (let ((p (point)))
+        (re-search-forward "[^ \t\n]" nil :no-error)
+        (backward-char)
+        (kill-region p (point)))
+    (kill-word 1)))
+
 
 ;; The next three functions are taken from the awesome 'Emacs Prelude'
 ;; project, already mentioned elsewhere.
