@@ -28,10 +28,8 @@
     (kill-word 1)))
 
 
-;; The next three functions are taken from the awesome 'Emacs Prelude'
-;; project, already mentioned elsewhere.
+;; Kills the current buffer and deletes the file it is visiting
 (defun delete-file-and-buffer ()
-  "Kills the current buffer and deletes the file it is visiting"
   (interactive)
   (let ((filename (buffer-file-name)))
     (when filename
@@ -40,9 +38,8 @@
   (kill-buffer))
 
 
+;; Allows to open the underlying file of a buffer in an external program
 (defun open-with ()
-  "Simple function that allows us to open the underlying
-file of a buffer in an external program."
   (interactive)
   (when buffer-file-name
     (shell-command (concat
@@ -52,8 +49,9 @@ file of a buffer in an external program."
                     " "
                     buffer-file-name))))
 
+
+;; Rename the current buffer and file it is visiting.
 (defun rename-file-and-buffer ()
-  "Rename the current buffer and file it is visiting."
   (interactive)
   (let ((filename (buffer-file-name)))
     (if (not (and filename (file-exists-p filename)))

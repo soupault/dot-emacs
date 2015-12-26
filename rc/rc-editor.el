@@ -32,9 +32,5 @@
 ;; Highlight the current line
 (global-hl-line-mode t)
 
-;; ediff - don't start another frame
-;(require 'ediff)
-;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
 
 ;;; rc-editor.el ends here

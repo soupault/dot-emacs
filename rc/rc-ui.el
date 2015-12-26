@@ -35,9 +35,10 @@
 ;; Prompting
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;
+;; Set color theme
 (require 'color-theme-tomorrow)
 (color-theme-tomorrow--define-theme night)
+
 
 ;; Powerful tool to manage file- and buffer- interfacing
 (require 'ido)

@@ -2,34 +2,17 @@
 
 
 ;; Python
-
 (use-package python-mode
   :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :commands python-mode
-  :config (progn
-            (add-hook 'python-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
-            (add-hook 'python-mode-hook
-                      (lambda ()
-                        ;; See https://github.com/company-mode/company-mode/issues/105
-                        ;; for details on this nasty bug.
-                        (remove-hook 'completion-at-point-functions
-                                     'py-shell-complete t)
-                        (subword-mode +1)
-                        (electric-indent-mode -1)))))
+  :mode ("\\.py\\'" . python-mode))
+
 
 (use-package cython-mode
   :ensure t
-  :commands cython-mode
-  :config (add-hook 'cython-mode-hook
-                    (lambda ()
-                      ;; same bug for cython, damit!
-                      (remove-hook 'completion-at-point-functions
-                                   'py-shell-complete t))))
+  :commands cython-mode)
 
 
 ;; C, C++
-
 (use-package cc-mode
   :init (add-hook 'c-mode-common-hook
                   '(lambda ()
@@ -42,31 +25,12 @@
   :ensure t)
 
 
-;; R
-
-(use-package ess-site
-  :ensure ess
-  :commands R
-  :init (progn
-          ;; TODO: why doesn't use-package require it for us?
-          (require 'ess-site)
-
-          (setq ess-eval-visibly-p nil
-                ess-use-tracebug t
-                ess-use-auto-complete t
-                ess-help-own-frame 'one
-                ess-ask-for-ess-directory nil)
-          (setq-default ess-dialect "R")
-          (ess-toggle-underscore t)))
-
 ;; Octave
-
 (use-package octave-mode
   :mode "\\.m$")
 
 
 ;; Elisp
-
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 
 (defun recompile-elc-on-save ()
