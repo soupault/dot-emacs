@@ -1,0 +1,8 @@
+auto-save-list/
+cache/
+elcustom/
+elpa/
+
+ac-comphist.dat
+ede-projects.el
+ido.last

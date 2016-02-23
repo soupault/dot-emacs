@@ -1,6 +1,5 @@
 ;;; rc-editor.el ---
 
-
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent
               tab-width 4           ;; but maintain correct appearance
               case-fold-search t    ;; case INsensitive search

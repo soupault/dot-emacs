@@ -4,6 +4,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Use visual beeper
+(setq visible-bell t)
+
 ;; Highlight paired parenthesis
 (show-paren-mode t)
 
@@ -28,7 +31,6 @@
 (line-number-mode t)
 (column-number-mode t)
 
-
 (setq cursor-in-non-selected-windows nil
       use-dialog-box nil)
 
@@ -38,7 +40,6 @@
 ;; Set color theme
 (require 'color-theme-tomorrow)
 (color-theme-tomorrow--define-theme night)
-
 
 ;; Powerful tool to manage file- and buffer- interfacing
 (require 'ido)

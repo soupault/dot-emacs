@@ -4,9 +4,14 @@
 ;; Python
 (use-package python-mode
   :ensure t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t)
+  (setq jedi:tooltip-method nil)  
   :mode ("\\.py\\'" . python-mode))
 
 
+;; Cython
 (use-package cython-mode
   :ensure t
   :commands cython-mode)
