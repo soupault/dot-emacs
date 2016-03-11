@@ -19,7 +19,8 @@
 ;; Mode line settings
 
 ;; Show line number for all modes
-;; (global-linum-mode t)
+(global-linum-mode t)
+
 ;; Set spacer for -nw version
 (unless window-system
   (defadvice linum-update-window (around linum-dynamic activate)
@@ -38,8 +39,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Set color theme
-(require 'color-theme-tomorrow)
-(color-theme-tomorrow--define-theme night)
+;; (require 'color-theme-tomorrow)
+;; (color-theme-tomorrow--define-theme night)
+;; (require 'zenburn-theme)
+(require 'ample-theme)
+(require 'ample-flat-theme)
 
 ;; Powerful tool to manage file- and buffer- interfacing
 (require 'ido)
