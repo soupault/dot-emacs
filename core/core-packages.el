@@ -24,5 +24,6 @@
 
 (require 'bind-key)
 
+(require 'smartparens-config)
 
 ;;; core-packages.el ends here

@@ -1,8 +1,15 @@
 ;;; rc-ui.el ---
 
 
+;; Disable startup screen
+(setq inhibit-startup-screen t)
+
+;; Disable menubar and toolbar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+
+;; Tailor split width threshold for 14"
+(setq split-width-threshold 140)
 
 ;; Use visual beeper
 (setq visible-bell t)
@@ -10,18 +17,10 @@
 ;; Highlight paired parenthesis
 (show-paren-mode t)
 
-;; Tailor split width threshold for 14"
-(setq split-width-threshold 140)
+;; Highlight the current line
+(global-hl-line-mode t)
 
-;; Disable startup screen
-(setq inhibit-startup-screen t)
-
-;; Mode line settings
-
-;; Show line number for all modes
-(global-linum-mode t)
-
-;; Set spacer for -nw version
+;; Set line number spacer for -nw version
 (unless window-system
   (defadvice linum-update-window (around linum-dynamic activate)
     (let* ((w (length (number-to-string
@@ -29,6 +28,7 @@
            (linum-format (concat "%" (number-to-string w) "d ")))
       ad-do-it)))
 
+;; Show row and column numbers in the bar
 (line-number-mode t)
 (column-number-mode t)
 

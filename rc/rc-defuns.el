@@ -1,5 +1,6 @@
 ;;; rc-defuns.el ---
 
+
 ;; Comment current line if no region is selected
 (defun comment-eclipse ()
   (interactive)

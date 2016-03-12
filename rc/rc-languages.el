@@ -1,6 +1,13 @@
 ;;; rc-languages.el ---
 
 
+;; Show line numbers
+(add-hook 'prog-mode-hook 'linum-mode)
+
+;; Help with parentheses
+(add-hook 'prog-mode-hook 'smartparens-strict-mode)
+
+
 ;; Python
 (use-package python-mode
   :ensure t
