@@ -5,9 +5,8 @@
 (use-package python-mode
   :ensure t
   :init
-  ;; (add-hook 'python-mode-hook 'jedi:setup)
-  ;; (setq jedi:complete-on-dot t)
-  ;; (setq jedi:tooltip-method nil)  
+  (use-package elpy
+    :config (elpy-enable))
   :mode ("\\.py\\'" . python-mode))
 
 

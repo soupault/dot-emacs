@@ -42,7 +42,7 @@
 ;; Help with parentheses
 (use-package smartparens
   :ensure t
-  :config (add-hook 'prog-mode-hook #'smartparens-strict-mode))
+  :config (add-hook 'prog-mode-hook #'smartparens-mode))
 
 (use-package rainbow-delimiters
   :ensure t
