@@ -14,9 +14,6 @@
 ;; Use visual beeper
 (setq visible-bell t)
 
-;; Highlight paired parenthesis
-(show-paren-mode t)
-
 ;; Highlight the current line
 (global-hl-line-mode t)
 
@@ -44,10 +41,6 @@
 ;; (require 'zenburn-theme)
 (require 'ample-theme)
 (require 'ample-flat-theme)
-
-;; Powerful tool to manage file- and buffer- interfacing
-(require 'ido)
-(ido-mode t)
 
 
 ;;; rc-ui.el ends here

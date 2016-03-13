@@ -22,8 +22,5 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'bind-key)
-
-(require 'smartparens-config)
 
 ;;; core-packages.el ends here
