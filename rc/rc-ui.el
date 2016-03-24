@@ -38,9 +38,12 @@
 ;; Set color theme
 ;; (require 'color-theme-tomorrow)
 ;; (color-theme-tomorrow--define-theme night)
-;; (require 'zenburn-theme)
-(require 'ample-theme)
-(require 'ample-flat-theme)
+;; (require 'ample-theme)
+
+(use-package zenburn-theme
+  :ensure t
+  :init
+  :config (load-theme 'zenburn t))
 
 
 ;;; rc-ui.el ends here
