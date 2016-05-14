@@ -39,6 +39,10 @@
 ;; Show line numbers
 (add-hook 'prog-mode-hook 'linum-mode)
 
+;; Configure company-mode
+(add-hook 'prog-mode-hook 'global-company-mode)
+(setq company-show-numbers t)  ;; show suggestions' numbers
+
 ;; Help with parentheses
 (use-package smartparens
   :ensure t

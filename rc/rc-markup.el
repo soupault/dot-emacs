@@ -4,25 +4,25 @@
 ;; Markdown
 
 (use-package markdown-mode
-  :ensure markdown-mode
+  :ensure t
   :commands markdown-mode
   :mode "\\.md\\|\\.markdown")
 
 ;; HTML, CSS
 
-(add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
+;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
 
-(use-package rainbow-mode
-  :ensure rainbow-mode
-  :diminish rainbow-mode
-  :config (progn
-            (add-hook 'html-mode-hook 'rainbow-turn-on)
-            (add-hook 'css-mode-hook 'rainbow-turn-on)))
+;; (use-package rainbow-mode
+;;   :ensure rainbow-mode
+;;   :diminish rainbow-mode
+;;   :config (progn
+;;             (add-hook 'html-mode-hook 'rainbow-turn-on)
+;;             (add-hook 'css-mode-hook 'rainbow-turn-on)))
 
-(use-package smartparens
-  :ensure smartparens
-  :init (sp-with-modes '(html-mode sgml-mode)
-          (sp-local-pair "<" ">")))
+;; (use-package smartparens
+;;   :ensure smartparens
+;;   :init (sp-with-modes '(html-mode sgml-mode)
+;;           (sp-local-pair "<" ">")))
 
 ;; gettext
 
@@ -40,10 +40,6 @@
 (use-package tex-site
   :ensure auctex
   :init (progn
-          (when-osx
-              (setq TeX-view-program-list '(("Preview" "open -a Skim %o"))
-                    TeX-view-program-selection '((output-pdf "Preview"))))
-
           (require 'texmathp)
 
           (setq TeX-auto-save t

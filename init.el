@@ -20,7 +20,7 @@
 (load (local-file-name "rc/rc-ui"))
 (load (local-file-name "rc/rc-editor"))
 (load (local-file-name "rc/rc-languages"))
-;(load (local-file-name "rc/rc-markup"))
+(load (local-file-name "rc/rc-markup"))
 (load (local-file-name "rc/rc-defuns"))
 (load (local-file-name "rc/rc-global-bindings"))
 
