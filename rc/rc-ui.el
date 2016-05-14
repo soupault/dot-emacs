@@ -45,14 +45,18 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Set color theme
-;; (require 'color-theme-tomorrow)
-;; (color-theme-tomorrow--define-theme night)
-;; (require 'ample-theme)
+;; (require 'tango-plus-theme)
+;; (require 'jsc-light-theme)
 
-(use-package zenburn-theme
+(use-package gandalf-theme
   :ensure t
   :init
-  :config (load-theme 'zenburn t))
+  :config (load-theme 'gandalf t))
+
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :init
+;;   :config (load-theme 'zenburn t))
 
 
 ;;; rc-ui.el ends here

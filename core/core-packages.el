@@ -2,7 +2,7 @@
 
 
 ;; Add directory with side packages
-(add-to-list 'load-path "~/.emacs.d/elcustom")
+(add-to-list 'load-path "~/.emacs.d/elcustom/")
 
 (require 'cl)
 (require 'package)
