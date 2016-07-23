@@ -29,6 +29,27 @@
   :ensure t)
 
 
+;; OCaml
+(use-package tuareg
+  :ensure t
+  :commands tuareg-mode
+  :config
+  (when (executable-find "opam")
+    (add-to-list 'load-path
+                 (concat
+                  (replace-regexp-in-string
+                   "\n$" ""
+                   (shell-command-to-string "opam config var share"))
+                  "/emacs/site-lisp"))
+
+    (require 'ocp-indent)
+
+    (when (require 'merlin nil t)
+      (add-hook 'tuareg-mode-hook 'merlin-mode t)
+      (add-hook 'caml-mode-hook 'merlin-mode t)
+      (setq merlin-command 'opam))))
+
+
 ;; Octave
 (use-package octave-mode
   :mode "\\.m$")
