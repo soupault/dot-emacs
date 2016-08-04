@@ -1,6 +1,15 @@
 ;;; rc-ui.el ---
 
 
+;; Set color theme
+;; (require 'tango-plus-theme)
+;; (require 'jsc-light-theme)
+
+(use-package gandalf-theme
+  :ensure t
+  :init
+  :config (load-theme 'gandalf t))
+
 ;; Font settings
 (cond
  ;; ((string-equal system-type "windows-nt")
@@ -43,20 +52,6 @@
 
 ;; Prompting
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;; Set color theme
-;; (require 'tango-plus-theme)
-;; (require 'jsc-light-theme)
-
-(use-package gandalf-theme
-  :ensure t
-  :init
-  :config (load-theme 'gandalf t))
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :init
-;;   :config (load-theme 'zenburn t))
 
 
 ;;; rc-ui.el ends here

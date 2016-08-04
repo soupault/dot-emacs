@@ -24,5 +24,7 @@
 (load (local-file-name "rc/rc-defuns"))
 (load (local-file-name "rc/rc-global-bindings"))
 
+(load (local-file-name "rc/rc-circe"))
+
 
 ;;; init.el ends here
