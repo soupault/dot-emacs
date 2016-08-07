@@ -36,9 +36,9 @@
          :sasl-username "soupault"
          :sasl-password ,mozilla-passwd
          :channels ("#rust" "#rust-beginners")
-         ))
+         )
       ;; Karagarga support channel
-      '(("BrokenSphere"
+        ("BrokenSphere"
          :tls t
          :nick "soupault"
          :channels ("#kg-help")
