@@ -27,15 +27,30 @@
          :sasl-username "soupault"
          :sasl-password ,freenode-passwd
          :channels ("#python" "#archlinux" "#ocaml" "#emacs")
+         )
+        ("Mozilla"
+         :host "irc.mozilla.org"
+         :port 6697
+         :tls t
+         :nick "soupault"
+         :sasl-username "soupault"
+         :sasl-password ,mozilla-passwd
+         :channels ("#rust" "#rust-beginners")
+         ))
+      ;; Karagarga support channel
+      '(("BrokenSphere"
+         :tls t
+         :nick "soupault"
+         :channels ("#kg-help")
          )))
 
-;; Karagarga support channel
-;; (setq circe-network-options
-;;       '(("BrokenSphere"
-;;          :tls t
-;;          :nick "soupault"
-;;          :channels ("#kg-help")
-;;          )))
+
+(defun irc ()
+  "Connect to IRC"
+  (interactive)
+  (circe "Freenode")
+  (circe "Mozilla"))
+
 
 ;; Automatically adjust text width
 (setq lui-time-stamp-position 'right-margin
