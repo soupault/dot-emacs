@@ -1,6 +1,9 @@
 ;;; rc-circe.el ---
 
 
+(use-package circe
+  :ensure t)
+
 ;; Indicate last read position with the bar
 (enable-lui-track-bar)
 
