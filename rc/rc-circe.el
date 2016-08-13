@@ -51,8 +51,7 @@
 (defun irc ()
   "Connect to IRC"
   (interactive)
-  (circe "Freenode")
-  (circe "Mozilla"))
+  (circe "Freenode"))
 
 
 ;; Automatically adjust text width
