@@ -4,6 +4,13 @@
 (use-package circe
   :ensure t)
 
+;; Enable and configure popup notifications
+(use-package circe-notifications
+  :ensure t
+  :init
+  (autoload 'enable-circe-notifications "circe-notifications" nil t)
+  (add-hook 'circe-server-connected-hook 'enable-circe-notifications))
+
 ;; Indicate last read position with the bar
 (enable-lui-track-bar)
 
