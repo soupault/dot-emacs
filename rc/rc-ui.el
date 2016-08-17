@@ -3,7 +3,11 @@
 
 ;; Set color theme
 ;; (require 'tango-plus-theme)
-;; (require 'jsc-light-theme)
+
+;; (load-theme 'hydandata-light)
+
+;; (require 'github-theme)
+;; (load-theme 'github)
 
 (use-package gandalf-theme
   :ensure t
