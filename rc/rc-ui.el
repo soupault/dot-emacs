@@ -3,6 +3,7 @@
 
 ;; Set color theme
 ;; (require 'tango-plus-theme)
+;; (load-theme 'tango-plus)
 
 ;; (load-theme 'hydandata-light)
 
