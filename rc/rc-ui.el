@@ -27,7 +27,8 @@
 (setq inhibit-startup-screen t)
 
 ;; Disable menubar and toolbar
-(tool-bar-mode -1)
+(if window-system
+    (tool-bar-mode -1))
 (menu-bar-mode -1)
 
 ;; Tailor split width threshold for 14"

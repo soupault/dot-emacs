@@ -40,8 +40,11 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Configure company-mode
-(add-hook 'prog-mode-hook 'company-mode)
-(setq company-show-numbers t)  ;; show suggestions' numbers
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'company-mode)
+  (setq company-show-numbers t))  ;; show suggestions' numbers
 
 ;; Help with parentheses
 (use-package smartparens
