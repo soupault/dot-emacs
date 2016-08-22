@@ -6,6 +6,7 @@
   :ensure t
   :init
   (use-package elpy
+    :ensure t
     :config (elpy-enable))
   :mode ("\\.py\\'" . python-mode))
 
