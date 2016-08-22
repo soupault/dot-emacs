@@ -12,7 +12,6 @@
 
 (use-package gandalf-theme
   :ensure t
-  :init
   :config (load-theme 'gandalf t))
 
 ;; Font settings
@@ -58,6 +57,11 @@
 
 ;; Prompting
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; Ease at-point search
+(use-package smartscan
+  :ensure t
+  :config (smartscan-mode t))
 
 
 ;;; rc-ui.el ends here
