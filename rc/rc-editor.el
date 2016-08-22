@@ -15,6 +15,10 @@
                               indentation space-after-tab)
       whitespace-line-column 80))
 
+;; Superb Git interface
+(use-package magit
+  :ensure t)
+
 ;; Various things
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent
               tab-width 4           ;; but maintain correct appearance
