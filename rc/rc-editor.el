@@ -1,10 +1,16 @@
 ;;; rc-editor.el ---
 
 
-;; Powerful tool to manage file- and buffer- interfacing
-(use-package ido
+;; Narrowing framework
+(use-package ivy
   :ensure t
-  :config (ido-mode t))
+  :init
+  (setq ivy-height 8)
+  (use-package swiper
+    :ensure t)
+  (use-package counsel
+    :ensure t)
+  :config (ivy-mode t))
 
 ;; Take care of the whitespace
 (use-package whitespace
