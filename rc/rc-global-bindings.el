@@ -5,6 +5,7 @@
 (global-set-key (kbd "M-d") 'kill-whitespace-or-word)
 (global-set-key (kbd "M-;") 'comment-eclipse)
 
+(global-set-key (kbd "C-x C-x") 'ivy-switch-buffer)
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
