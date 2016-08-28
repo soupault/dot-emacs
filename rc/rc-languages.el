@@ -30,6 +30,12 @@
   :ensure t)
 
 
+;; Rust
+(use-package rust-mode
+  :ensure t
+  :mode ("\\.rs\\'" . rust-mode))
+
+
 ;; OCaml
 (use-package tuareg
   :ensure t
