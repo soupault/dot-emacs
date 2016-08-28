@@ -5,8 +5,6 @@
 ;; (require 'tango-plus-theme)
 ;; (load-theme 'tango-plus)
 
-;; (load-theme 'hydandata-light)
-
 ;; (require 'github-theme)
 ;; (load-theme 'github)
 
