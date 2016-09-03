@@ -62,15 +62,15 @@
   :ensure t
   :config
   (show-smartparens-global-mode)
-  (add-hook 'prog-mode-hook #'smartparens-mode))
+  (add-hook 'prog-mode-hook #'smartparens-mode)
 
-(sp-with-modes '(emacs-lisp-mode
-                 inferior-emacs-lisp-mode
-                 lisp-interaction-mode
-                 lisp-mode)
-  ;; Disable annoying ' pairing
-  (sp-local-pair "'" nil :actions nil)
-  (sp-local-pair "`" "'" :when '(sp-in-string-p) :actions '(insert wrap)))
+  (sp-with-modes '(emacs-lisp-mode
+                   inferior-emacs-lisp-mode
+                   lisp-interaction-mode
+                   lisp-mode)
+    ;; Disable annoying ' pairing
+    (sp-local-pair "'" nil :actions nil)
+    (sp-local-pair "`" "'" :when '(sp-in-string-p) :actions '(insert wrap))))
 
 ;; Use different colors for nested paired parentheses
 (use-package rainbow-delimiters
