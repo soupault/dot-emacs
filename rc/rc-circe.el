@@ -4,6 +4,9 @@
 (use-package circe
   :ensure t)
 
+;; Adjust scroll behaviour in the best possible way
+(setq lui-scroll-behavior "post-output")
+
 ;; Enable and configure popup notifications
 (use-package circe-notifications
   :ensure t
@@ -23,6 +26,18 @@
 
 ;; Use circular nickname autocompletion
 (setq circe-use-cycle-completion t)
+
+;; Automatically adjust text width
+(setq lui-time-stamp-position 'right-margin
+      lui-fill-type nil)
+
+(add-hook 'lui-mode-hook 'my-lui-setup)
+(defun my-lui-setup ()
+  (setq fringes-outside-margins t
+        right-margin-width 8
+        word-wrap t
+        ;; add indentation to wrapped lines
+        wrap-prefix "  "))
 
 ;; Configure IRC-servers and connection details
 (if (file-exists-p "~/.private.el")
@@ -55,23 +70,10 @@
          :channels ("#kg-help")
          )))
 
-
 (defun irc ()
   "Connect to IRC"
   (interactive)
   (circe "Freenode"))
-
-
-;; Automatically adjust text width
-(setq lui-time-stamp-position 'right-margin
-      lui-fill-type nil)
-
-(add-hook 'lui-mode-hook 'my-lui-setup)
-(defun my-lui-setup ()
-  (setq fringes-outside-margins t
-        right-margin-width 8
-        word-wrap t
-        wrap-prefix ""))
 
 
 ;;; rc-circe.el ends here

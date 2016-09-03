@@ -10,12 +10,10 @@
     :config (elpy-enable))
   :mode ("\\.py\\'" . python-mode))
 
-
 ;; Cython
 (use-package cython-mode
   :ensure t
-  :commands cython-mode)
-
+  :mode ("\\.pyx\\'" . cython-mode))
 
 ;; C, C++
 (use-package cc-mode
@@ -29,12 +27,10 @@
 (use-package cmake-mode
   :ensure t)
 
-
 ;; Rust
 (use-package rust-mode
   :ensure t
   :mode ("\\.rs\\'" . rust-mode))
-
 
 ;; OCaml
 (use-package tuareg
@@ -48,9 +44,7 @@
                    "\n$" ""
                    (shell-command-to-string "opam config var share"))
                   "/emacs/site-lisp"))
-
     (require 'ocp-indent)
-
     (when (require 'merlin nil t)
       (add-hook 'tuareg-mode-hook 'merlin-mode t)
       (add-hook 'caml-mode-hook 'merlin-mode t)
@@ -59,8 +53,7 @@
 
 ;; Octave
 (use-package octave-mode
-  :mode "\\.m$")
-
+  :mode "\\.m\\'")
 
 ;; Elisp
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
@@ -70,8 +63,7 @@
             (lambda ()
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))
-            nil
-            t))
+            nil t))
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'recompile-elc-on-save)
@@ -79,13 +71,10 @@
 (use-package eldoc
   :diminish eldoc-mode)
 
-
 ;; Markdown
 (use-package markdown-mode
   :ensure t
-  :commands markdown-mode
-  :mode "\\.md\\|\\.markdown")
-
+  :mode ("\\.md\\'" . markdown-mode))
 
 ;; HTML, CSS
 ;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
@@ -102,13 +91,6 @@
 ;;   :init (sp-with-modes '(html-mode sgml-mode)
 ;;           (sp-local-pair "<" ">")))
 
-
-;; gettext
-(when (require 'po-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
-  (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t))
-
-
 ;; LaTeX via AucTeX
 (eval-after-load "tex"
   '(setcdr (assoc "LaTeX" TeX-command-list)
@@ -119,11 +101,9 @@
   :ensure auctex
   :init (progn
           (require 'texmathp)
-
           (setq TeX-auto-save t
                 TeX-parse-self t
                 TeX-DVI-via-PDFTeX t)
-
           (add-hook 'LaTeX-mode-hook '(lambda ()
                                         (LaTeX-math-mode 1)
                                         (TeX-fold-mode 1)

@@ -17,7 +17,6 @@
                   (point))))
     (comment-or-uncomment-region start end)))
 
-
 ;; If cursor stands on whitespace, delete it till the next word
 (defun kill-whitespace-or-word ()
   (interactive)
@@ -28,7 +27,6 @@
         (kill-region p (point)))
     (kill-word 1)))
 
-
 ;; Kills the current buffer and deletes the file it is visiting
 (defun delete-file-and-buffer ()
   (interactive)
@@ -37,7 +35,6 @@
       (delete-file filename)
       (message "Deleted file %s" filename)))
   (kill-buffer))
-
 
 ;; Allows to open the underlying file of a buffer in an external program
 (defun open-with ()
@@ -49,7 +46,6 @@
                       (read-shell-command "Open current file with: "))
                     " "
                     buffer-file-name))))
-
 
 ;; Rename the current buffer and file it is visiting.
 (defun rename-file-and-buffer ()

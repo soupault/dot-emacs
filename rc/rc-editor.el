@@ -17,8 +17,8 @@
   :ensure t
   :config
   (setq whitespace-style '(face trailing lines-tail
-                              space-before-tab
-                              indentation space-after-tab)
+                                space-before-tab
+                                indentation space-after-tab)
       whitespace-line-column 80))
 
 ;; Superb Git interface
@@ -54,19 +54,28 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'company-mode)
-  (setq company-show-numbers t))  ;; show suggestions' numbers
+  ;; show suggestions' numbers
+  (setq company-show-numbers t))
 
-;; Help with parentheses
+;; Paired parentheses helper
 (use-package smartparens
   :ensure t
-  :config (add-hook 'prog-mode-hook #'smartparens-mode))
+  :config
+  (show-smartparens-global-mode)
+  (add-hook 'prog-mode-hook #'smartparens-mode))
 
+(sp-with-modes '(emacs-lisp-mode
+                 inferior-emacs-lisp-mode
+                 lisp-interaction-mode
+                 lisp-mode)
+  ;; Disable annoying ' pairing
+  (sp-local-pair "'" nil :actions nil)
+  (sp-local-pair "`" "'" :when '(sp-in-string-p) :actions '(insert wrap)))
+
+;; Use different colors for nested paired parentheses
 (use-package rainbow-delimiters
   :ensure t
   :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
-;; Highlight paired parenthesis
-(show-paren-mode t)
 
 ;; Enable code snippets helpers in prog-mode
 (use-package yasnippet
