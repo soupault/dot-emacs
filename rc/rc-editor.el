@@ -2,31 +2,31 @@
 
 
 ;; Narrowing framework
-(use-package ivy
-  :ensure t
-  :init
-  (setq ivy-height 8)
-  (use-package swiper
-    :ensure t)
-  (use-package counsel
-    :ensure t)
-  :config (ivy-mode t))
-
-;; (use-package ido
+;; (use-package ivy
 ;;   :ensure t
 ;;   :init
-;;   (use-package ido-vertical-mode
-;;     :ensure t
-;;     :config
-;;     (setq ido-max-prospects 7)
-;;     (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
-;;     (setq ido-vertical-show-count t))
-;;   (use-package smex
-;;     :ensure t
-;;     :init (smex-initialize))
-;;   :config
-;;   (ido-mode t)
-;;   (ido-vertical-mode t))
+;;   (setq ivy-height 8)
+;;   (use-package swiper
+;;     :ensure t)
+;;   (use-package counsel
+;;     :ensure t)
+;;   :config (ivy-mode t))
+
+(use-package ido
+  :ensure t
+  :init
+  (use-package ido-vertical-mode
+    :ensure t
+    :config
+    (setq ido-max-prospects 7)
+    (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+    (setq ido-vertical-show-count t))
+  (use-package smex
+    :ensure t
+    :init (smex-initialize))
+  :config
+  (ido-mode t)
+  (ido-vertical-mode t))
 
 ;; Take care of the whitespace
 (use-package whitespace
@@ -38,8 +38,8 @@
       whitespace-line-column 80))
 
 ;; Superb Git interface
-(use-package magit
-  :ensure t)
+;; (use-package magit
+;;   :ensure t)
 
 ;; Various things
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent
@@ -94,9 +94,9 @@
   :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; Enable code snippets helpers in prog-mode
-(use-package yasnippet
-  :ensure t
-  :config (add-hook 'prog-mode-hook #'yas-minor-mode))
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 
 ;;; rc-editor.el ends here
