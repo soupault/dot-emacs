@@ -24,6 +24,8 @@
   (use-package smex
     :ensure t
     :init (smex-initialize))
+  (use-package swiper
+    :ensure t)
   :config
   (ido-mode t)
   (ido-vertical-mode t))
@@ -38,8 +40,8 @@
       whitespace-line-column 80))
 
 ;; Superb Git interface
-;; (use-package magit
-;;   :ensure t)
+(use-package magit
+  :ensure t)
 
 ;; Various things
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent
