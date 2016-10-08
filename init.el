@@ -1,6 +1,9 @@
 ;;; init.el ---
 
 
+;; Suppress automatic generation of this line (is called in core-packages.el)
+;; (package-initialize)
+
 (defvar local-dir user-emacs-directory
   "The root dir of the Emacs configuration.")
 
