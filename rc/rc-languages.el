@@ -4,19 +4,21 @@
 ;; Python
 (use-package python-mode
   :ensure t
+  :mode "\\.py\\'"
   :init
   (use-package elpy
     :ensure t
-    :config (elpy-enable))
-  :mode ("\\.py\\'" . python-mode))
+    :config (elpy-enable)))
 
 ;; Cython
 (use-package cython-mode
   :ensure t
-  :mode ("\\.pyx\\'" . cython-mode))
+  :mode "\\.pyx\\'")
 
 ;; C, C++
 (use-package cc-mode
+  :ensure t
+  :mode ("\\.c\\'" "\\.h\\'" "\\.cc\\'" "\\.cpp\\'" "\\.hpp\\'")
   :init (add-hook 'c-mode-common-hook
                   '(lambda ()
                      (local-set-key (kbd "RET") 'newline-and-indent)
@@ -30,11 +32,12 @@
 ;; Rust
 (use-package rust-mode
   :ensure t
-  :mode ("\\.rs\\'" . rust-mode))
+  :mode "\\.rs\\'")
 
 ;; OCaml
 (use-package tuareg
   :ensure t
+  :mode ("\\.ml\\'" "\\.mli\\'")
   :commands tuareg-mode
   :config
   (when (executable-find "opam")
@@ -74,7 +77,7 @@
 ;; Markdown
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" . markdown-mode))
+  :mode "\\.md\\'")
 
 ;; HTML, CSS
 ;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
@@ -99,6 +102,7 @@
 
 (use-package tex-site
   :ensure auctex
+  :mode "\\.tex\\'"
   :init (progn
           (require 'texmathp)
           (setq TeX-auto-save t
