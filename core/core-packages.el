@@ -8,12 +8,16 @@
 (require 'package)
 
 (add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-;;             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+             '("elpy" . "https://jorgenschaefer.github.io/packages/") t)
+
+(setq package-archive-priorities
+      '(("melpa-stable" . 20)
+        ("elpy" . 20)
+        ("melpa" . 10)))
 
 (setq package-user-dir (local-file-name "elpa"))
 
