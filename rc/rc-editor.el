@@ -41,7 +41,8 @@
 
 ;; Superb Git interface
 (use-package magit
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Various things
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent
