@@ -76,6 +76,7 @@
 
 ;; Markdown
 (use-package markdown-mode
+  :defer t
   :ensure t
   :mode "\\.md\\'")
 
@@ -95,19 +96,13 @@
 ;;           (sp-local-pair "<" ">")))
 
 ;; LaTeX via AucTeX
-(eval-after-load "tex"
-  '(setcdr (assoc "LaTeX" TeX-command-list)
-          '("%`%l%(mode) -shell-escape%' %t"
-          TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
-
-(use-package tex-site
+(use-package tex-mode
   :ensure auctex
   :mode "\\.tex\\'"
   :init (progn
           (require 'texmathp)
           (setq TeX-auto-save t
-                TeX-parse-self t
-                TeX-DVI-via-PDFTeX t)
+                TeX-parse-self t)
           (add-hook 'LaTeX-mode-hook '(lambda ()
                                         (LaTeX-math-mode 1)
                                         (TeX-fold-mode 1)
