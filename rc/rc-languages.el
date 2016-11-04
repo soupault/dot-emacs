@@ -76,7 +76,6 @@
 
 ;; Markdown
 (use-package markdown-mode
-  :defer t
   :ensure t
   :mode "\\.md\\'")
 
@@ -96,9 +95,9 @@
 ;;           (sp-local-pair "<" ">")))
 
 ;; LaTeX via AucTeX
-(use-package tex-mode
-  :ensure auctex
-  :mode "\\.tex\\'"
+(use-package auctex
+  :ensure t
+  :mode ("\\.tex\\'" . TeX-latex-mode)
   :init (progn
           (require 'texmathp)
           (setq TeX-auto-save t
