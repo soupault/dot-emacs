@@ -95,8 +95,8 @@
 ;;           (sp-local-pair "<" ">")))
 
 ;; LaTeX via AucTeX
-(use-package auctex
-  :ensure t
+(use-package tex
+  :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :init (progn
           (require 'texmathp)
