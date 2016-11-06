@@ -16,15 +16,12 @@
   :mode "\\.pyx\\'")
 
 ;; C, C++
-(use-package cc-mode
-  :ensure t
-  :mode ("\\.c\\'" "\\.h\\'" "\\.cc\\'" "\\.cpp\\'" "\\.hpp\\'")
-  :init (add-hook 'c-mode-common-hook
-                  '(lambda ()
-                     (local-set-key (kbd "RET") 'newline-and-indent)
-                     (setq c-default-style "linux"
-                           c-basic-offset 4)
-                     (c-set-offset 'substatement-open 0))))
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'newline-and-indent)
+             (setq c-default-style "linux"
+                   c-basic-offset 4)
+             (c-set-offset 'substatement-open 0)))
 
 (use-package cmake-mode
   :ensure t)
@@ -78,21 +75,6 @@
 (use-package markdown-mode
   :ensure t
   :mode "\\.md\\'")
-
-;; HTML, CSS
-;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
-
-;; (use-package rainbow-mode
-;;   :ensure rainbow-mode
-;;   :diminish rainbow-mode
-;;   :config (progn
-;;             (add-hook 'html-mode-hook 'rainbow-turn-on)
-;;             (add-hook 'css-mode-hook 'rainbow-turn-on)))
-
-;; (use-package smartparens
-;;   :ensure smartparens
-;;   :init (sp-with-modes '(html-mode sgml-mode)
-;;           (sp-local-pair "<" ">")))
 
 ;; LaTeX via AucTeX
 (use-package tex
