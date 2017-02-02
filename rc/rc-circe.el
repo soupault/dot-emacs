@@ -43,6 +43,7 @@
 (if (file-exists-p "~/.private.el")
     (load-file "~/.private.el")
   (setq freenode-passwd nil
+        mozilla-passwd nil
         another-passwd nil))
 
 (setq circe-network-options
