@@ -14,10 +14,12 @@
 (add-to-list 'package-archives
              '("elpy" . "https://jorgenschaefer.github.io/packages/") t)
 
-(setq package-archive-priorities
-      '(("melpa-stable" . 20)
-        ("elpy" . 20)
-        ("melpa" . 10)))
+(if (version< emacs-version "24.4")
+    (message "Repo priorities are not supported by the current Emacs version")
+  (setq package-archive-priorities
+        '(("melpa-stable" . 20)
+          ("elpy" . 20)
+          ("melpa" . 10))))
 
 (setq package-user-dir (local-file-name "elpa"))
 

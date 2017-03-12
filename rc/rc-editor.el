@@ -40,9 +40,11 @@
       whitespace-line-column 80))
 
 ;; Superb Git interface
-(use-package magit
-  :ensure t
-  :defer t)
+(if (version< emacs-version "24.4")
+    (message "magit is not available for the current Emacs version")
+  (use-package magit
+    :ensure t
+    :defer t))
 
 ;; Various things
 (setq-default indent-tabs-mode nil  ;; don't use tabs to indent

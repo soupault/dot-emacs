@@ -8,11 +8,13 @@
 (setq lui-scroll-behavior "post-output")
 
 ;; Enable and configure popup notifications
-(use-package circe-notifications
-  :ensure t
-  :init
-  (autoload 'enable-circe-notifications "circe-notifications" nil t)
-  (add-hook 'circe-server-connected-hook 'enable-circe-notifications))
+(if (version< emacs-version "24.4")
+    (message "circe-notifications is not available for the current Emacs version")
+  (use-package circe-notifications
+    :ensure t
+    :init
+    (autoload 'enable-circe-notifications "circe-notifications" nil t)
+    (add-hook 'circe-server-connected-hook 'enable-circe-notifications)))
 
 ;; Indicate last read position with the bar
 (enable-lui-track-bar)
