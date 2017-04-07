@@ -2,15 +2,25 @@
 
 
 ;; Set color theme
-;; (require 'tango-plus-theme)
-;; (load-theme 'tango-plus)
-
-;; (require 'github-theme)
-;; (load-theme 'github)
-
-(use-package gandalf-theme
+(use-package tango-plus-theme
   :ensure t
-  :config (load-theme 'gandalf t))
+  :config (load-theme 'tango-plus t))
+
+;; (use-package github-theme
+;;   :ensure t
+;;   :config (load-theme 'github t))
+
+;; (use-package hemisu-theme
+;;   :ensure t
+;;   :config (load-theme 'hemisu-dark t))
+
+;; (use-package hydandata-light-theme
+;;   :ensure t
+;;   :config (load-theme 'hydandata-light t))
+
+;; (use-package gandalf-theme
+;;   :ensure t
+;;   :config (load-theme 'gandalf t))
 
 ;; Font settings
 (cond
