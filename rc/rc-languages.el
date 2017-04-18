@@ -50,6 +50,11 @@
       (add-hook 'caml-mode-hook 'merlin-mode t)
       (setq merlin-command 'opam))))
 
+;; Haskell
+(use-package haskell-mode
+  :ensure t
+  :defer t
+  :mode "\\.hs\\'")
 
 ;; Octave
 (use-package octave-mode
