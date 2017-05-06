@@ -5,7 +5,7 @@
 (use-package python-mode
   :ensure t
   :mode "\\.py\\'"
-  :init
+  :config
   (use-package elpy
     :ensure t
     :config (elpy-enable)))
@@ -53,7 +53,6 @@
 ;; Haskell
 (use-package haskell-mode
   :ensure t
-  :defer t
   :mode "\\.hs\\'")
 
 ;; Octave
