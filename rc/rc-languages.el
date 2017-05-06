@@ -8,7 +8,9 @@
   :config
   (use-package elpy
     :ensure t
-    :config (elpy-enable)))
+    :config '(lambda ()
+               (setq elpy-module-yasnippet nil)
+               (elpy-enable))))
 
 ;; Cython
 (use-package cython-mode
