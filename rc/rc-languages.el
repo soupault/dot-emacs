@@ -36,7 +36,6 @@
 ;; OCaml
 (use-package tuareg
   :ensure t
-  :mode ("\\.ml\\'" "\\.mli\\'")
   :commands tuareg-mode
   :config
   (when (executable-find "opam")
@@ -46,7 +45,9 @@
                    "\n$" ""
                    (shell-command-to-string "opam config var share"))
                   "/emacs/site-lisp"))
+
     (require 'ocp-indent)
+
     (when (require 'merlin nil t)
       (add-hook 'tuareg-mode-hook 'merlin-mode t)
       (add-hook 'caml-mode-hook 'merlin-mode t)
