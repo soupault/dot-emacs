@@ -1,35 +1,6 @@
 ;;; rc-editor.el ---
 
 
-;; Narrowing framework
-;; (use-package ivy
-;;   :ensure t
-;;   :init
-;;   (setq ivy-height 8)
-;;   (use-package swiper
-;;     :ensure t)
-;;   (use-package counsel
-;;     :ensure t)
-;;   :config (ivy-mode t))
-
-(use-package ido
-  :ensure t
-  :init
-  (use-package ido-vertical-mode
-    :ensure t
-    :config
-    (setq ido-max-prospects 7)
-    (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
-    (setq ido-vertical-show-count t))
-  (use-package smex
-    :ensure t
-    :init (smex-initialize))
-  (use-package swiper
-    :ensure t)
-  :config
-  (ido-mode t)
-  (ido-vertical-mode t))
-
 ;; Take care of the whitespace
 (use-package whitespace
   :ensure t
@@ -75,8 +46,69 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'company-mode)
-  ;; show suggestions' numbers
+  ;; Show suggestions' numbers
   (setq company-show-numbers t))
+
+;; Configure autocompletion framework
+(use-package helm
+  :ensure t
+  :init
+  (progn
+    (require 'helm-config)
+    (setq helm-split-window-in-side-p t
+          helm-M-x-fuzzy-match t
+          helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match t
+          helm-move-to-line-cycle-in-source t
+          helm-ff-search-library-in-sexp t
+          helm-ff-file-name-history-use-recentf t
+          helm-echo-input-in-header-line t
+          helm-display-buffer-default-height 12)
+    (use-package helm-swoop
+      :ensure t)
+    ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+    ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+    ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+    ;; (c) Emacs Prelude
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
+
+    (helm-mode))
+  :diminish helm-mode
+  :bind (("C-c h" . helm-mini)
+         ("C-c i" . helm-imenu)
+         ("C-s" . helm-swoop)
+         ("C-h a" . helm-apropos)
+         ("C-x f" . helm-recentf)
+         ("C-x b" . helm-for-files)
+         ("C-x C-x" . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         ("M-y" . helm-show-kill-ring)
+         ("M-x" . helm-M-x)))
+
+;; Configure project interaction tool
+(use-package projectile
+  :ensure t
+  :init
+  (progn
+    (setq projectile-completion-system 'helm
+          projectile-create-missing-test-files t
+          projectile-switch-project-action #'projectile-commander)
+    (projectile-global-mode))
+  :diminish projectile-mode)
+
+(use-package helm-projectile
+  :ensure t
+  :init (progn
+          (helm-projectile-on)
+          (setq helm-for-files-preferred-list
+                '(helm-source-buffers-list
+                  helm-source-projectile-files-list
+                  helm-source-recentf
+                  helm-source-bookmarks
+                  helm-source-file-cache
+                  helm-source-files-in-current-dir
+                  helm-source-locate))))
 
 ;; Paired parentheses helper
 (use-package smartparens
