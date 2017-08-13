@@ -55,7 +55,7 @@
          :sasl-username "soupault"
          :sasl-password ,freenode-passwd
          :channels ("#python" "#archlinux" "#archlinux-ec2"
-                    "#ocaml" "#emacs")
+                    "#ocaml" "#emacs" "#scala")
          )
         ("Mozilla"
          :host "irc.mozilla.org"

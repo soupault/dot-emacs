@@ -28,11 +28,6 @@
 (use-package cmake-mode
   :ensure t)
 
-;; Rust
-(use-package rust-mode
-  :ensure t
-  :mode "\\.rs\\'")
-
 ;; OCaml
 (use-package tuareg
   :ensure t
@@ -57,10 +52,6 @@
 (use-package haskell-mode
   :ensure t
   :mode "\\.hs\\'")
-
-;; Octave
-(use-package octave-mode
-  :mode "\\.m\\'")
 
 ;; Elisp
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
