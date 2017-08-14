@@ -73,6 +73,9 @@
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (global-unset-key (kbd "C-x c"))
 
+    (custom-set-faces
+     '(helm-selection ((t (:inherit highlight :background "white")))))
+    
     (helm-mode))
   :diminish helm-mode
   :bind (("C-c h" . helm-mini)
