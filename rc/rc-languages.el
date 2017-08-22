@@ -28,6 +28,11 @@
 (use-package cmake-mode
   :ensure t)
 
+;; Protocol buffers
+(use-package protobuf-mode
+  :ensure t
+  :mode "\\.proto\\'")
+
 ;; OCaml
 (use-package tuareg
   :ensure t
