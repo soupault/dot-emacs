@@ -23,13 +23,16 @@
 ;;   :config (load-theme 'gandalf t))
 
 ;; Font settings
-(cond
- ;; ((string-equal system-type "windows-nt")
+(case system-type
+ ;; ((windows-nt)
  ;;  (progn
  ;;    (set-default-font "Liberation Mono 12"))))
- ((string-equal system-type "gnu/linux")
+ ((darwin)
   (progn
-    (set-default-font "Liberation Mono 12"))))
+    (set-default-font "Menlo 14")))
+  ((gnu/linux)
+   (progn
+     (set-default-font "Liberation Mono 12"))))
 
 ;; Disable startup screen
 (setq inhibit-startup-screen t)
