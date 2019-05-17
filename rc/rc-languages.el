@@ -80,18 +80,18 @@
   :mode "\\.md\\'")
 
 ;; LaTeX via AucTeX
-(use-package tex
-  :ensure auctex
-  :mode ("\\.tex\\'" . TeX-latex-mode)
-  :init (progn
-          (require 'texmathp)
-          (setq TeX-auto-save t
-                TeX-parse-self t)
-          (add-hook 'LaTeX-mode-hook '(lambda ()
-                                        (LaTeX-math-mode 1)
-                                        (TeX-fold-mode 1)
-                                        (TeX-PDF-mode 1)
-                                        (outline-minor-mode 1)))))
+;; (use-package tex
+;;   :ensure auctex
+;;   :mode ("\\.tex\\'" . TeX-latex-mode)
+;;   :init (progn
+;;           (require 'texmathp)
+;;           (setq TeX-auto-save t
+;;                 TeX-parse-self t)
+;;           (add-hook 'LaTeX-mode-hook '(lambda ()
+;;                                         (LaTeX-math-mode 1)
+;;                                         (TeX-fold-mode 1)
+;;                                         (TeX-PDF-mode 1)
+;;                                         (outline-minor-mode 1)))))
 
 
 ;;; rc-languages.el ends here
