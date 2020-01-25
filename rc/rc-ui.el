@@ -2,13 +2,13 @@
 
 
 ;; Set color theme
-(use-package tango-plus-theme
-  :ensure t
-  :config (load-theme 'tango-plus t))
+;;(use-package tango-plus-theme
+;;  :ensure t
+;;  :config (load-theme 'tango-plus t))
 
-;; (use-package github-theme
-;;   :ensure t
-;;   :config (load-theme 'github t))
+(use-package github-theme
+  :ensure t
+  :config (load-theme 'github t))
 
 ;; (use-package hemisu-theme
 ;;   :ensure t
