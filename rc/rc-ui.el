@@ -29,10 +29,10 @@
  ;;    (set-default-font "Liberation Mono 12"))))
  ((darwin)
   (progn
-    (set-default-font "Menlo 14")))
+     (set-frame-font "Menlo 14" nil t)))
   ((gnu/linux)
    (progn
-     (set-default-font "Liberation Mono 12"))))
+     (set-frame-font "Liberation Mono 12" nil t))))
 
 ;; Disable startup screen
 (setq inhibit-startup-screen t)
